@@ -8,7 +8,7 @@ import math
 pygame.init()
 
 # Create the screen.
-screen = pygame.display.set_mode ((800, 600))
+screen = pygame.display.set_mode((800, 600))
 background = pygame.image.load('img/space.png')
 
 # Background music
@@ -63,27 +63,34 @@ def show_score(x, y):
     score = font.render("HITS: " + str(score_value), True, (255, 255, 255))
     screen.blit(score, (x, y))
 
+
 def game_over_text():
     over_text = over_font.render("GAME OVER", True, (255, 255, 255))
     screen.blit(over_text, (260, 250))
 
+
 def player(x, y):
     screen.blit(playerImg, (x, y))
 
+
 def enemy(x, y, i):
     screen.blit(enemyImg[i], (x, y))
+
 
 def fire_bullet(x, y):
     global bullet_state
     bullet_state = "fire"
     screen.blit(bulletImg, (x + 16, y + 10))
 
+
 def isCollision(enemyX, enemyY, bulletX, bulletY):
-    distance = math.sqrt((math.pow(enemyX - bulletX, 2)) + (math.pow(enemyY - bulletY, 2)))
+    distance = math.sqrt((math.pow(enemyX - bulletX, 2)) +
+                         (math.pow(enemyY - bulletY, 2)))
     if distance < 27:
         return True
     else:
         return False
+
 
 # Game loop
 running = True
@@ -141,8 +148,8 @@ while running:
         elif enemyX[i] >= 736:
             enemyX_change[i] = -0.3
             enemyY[i] += enemyY_change[i]
-        
-        #Collision
+
+        # Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
             explosion_sound = mixer.Sound("sfx/explosion.wav")
@@ -150,16 +157,15 @@ while running:
             bulletY = 480
             bullet_state = "ready"
             score_value += 1
-            
+
             if score_value == 50:
                 win_sound = mixer.Sound("sfx/win.wav")
                 win_sound.play()
 
             enemyX[i] = random.randint(0, 736)
             enemyY[i] = random.randint(50, 150)
-            
-        
-        enemy(enemyX[i],enemyY[i], i)
+
+        enemy(enemyX[i], enemyY[i], i)
 
     # Bullet movement
     if bulletY <= 0:
@@ -169,6 +175,6 @@ while running:
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
-    player(playerX,playerY)
+    player(playerX, playerY)
     show_score(textX, textY)
     pygame.display.update()
