@@ -9,19 +9,19 @@ pygame.init()
 
 # Create the screen.
 screen = pygame.display.set_mode ((800, 600))
-background = pygame.image.load('space.png')
+background = pygame.image.load('img/space.png')
 
 # Background music
-mixer.music.load('music.wav')
+mixer.music.load('music/music.wav')
 mixer.music.play(-1)
 
 # Title & icon.
 pygame.display.set_caption('Space Invaders')
-icon = pygame.image.load('launch.png')
+icon = pygame.image.load('img/launch.png')
 pygame.display.set_icon(icon)
 
 # Player
-playerImg = pygame.image.load('player.png')
+playerImg = pygame.image.load('img/player.png')
 playerX = 370
 playerY = 480
 playerX_change = 0
@@ -35,14 +35,14 @@ enemyY_change = []
 num_of_enemies = 6
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('ufo.png'))
+    enemyImg.append(pygame.image.load('img/ufo.png'))
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(0.5)
     enemyY_change.append(20)
 
 # Bullet
-bulletImg = pygame.image.load('bullet.png')
+bulletImg = pygame.image.load('img/bullet.png')
 bulletX = 0
 bulletY = 480
 bulletX_change = 0
@@ -108,7 +108,7 @@ while running:
                     # Get current location of spaceship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
-                    bullet_sound = mixer.Sound("shoot.wav")
+                    bullet_sound = mixer.Sound("sfx/shoot.wav")
                     bullet_sound.play()
 
         if event.type == pygame.KEYUP:
@@ -145,14 +145,14 @@ while running:
         #Collision
         collision = isCollision(enemyX[i], enemyY[i], bulletX, bulletY)
         if collision:
-            explosion_sound = mixer.Sound("explosion.wav")
+            explosion_sound = mixer.Sound("sfx/explosion.wav")
             explosion_sound.play()
             bulletY = 480
             bullet_state = "ready"
             score_value += 1
             
             if score_value == 50:
-                win_sound = mixer.Sound("win.wav")
+                win_sound = mixer.Sound("sfx/win.wav")
                 win_sound.play()
 
             enemyX[i] = random.randint(0, 736)
