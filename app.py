@@ -151,6 +151,10 @@ while running:
             bullet_state = "ready"
             score_value += 1
             
+            if score_value == 50:
+                win_sound = mixer.Sound("win.wav")
+                win_sound.play()
+
             enemyX[i] = random.randint(0, 736)
             enemyY[i] = random.randint(50, 150)
             
