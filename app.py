@@ -104,7 +104,7 @@ while running:
             if event.key == pygame.K_RIGHT:
                 playerX_change = 0.3
             if event.key == pygame.K_SPACE:
-                if bullet_state is "ready":
+                if bullet_state == "ready":
                     # Get current location of spaceship
                     bulletX = playerX
                     fire_bullet(bulletX, bulletY)
@@ -150,6 +150,7 @@ while running:
             bulletY = 480
             bullet_state = "ready"
             score_value += 1
+            
             enemyX[i] = random.randint(0, 736)
             enemyY[i] = random.randint(50, 150)
             
@@ -160,7 +161,7 @@ while running:
     if bulletY <= 0:
         bulletY = 480
         bullet_state = "ready"
-    if bullet_state is "fire":
+    if bullet_state == "fire":
         fire_bullet(bulletX, bulletY)
         bulletY -= bulletY_change
 
