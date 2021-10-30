@@ -9,25 +9,27 @@ pygame.init()
 
 # Create the screen.
 screen = pygame.display.set_mode((800, 600))
-background = pygame.image.load('img/space.png')
+background = pygame.image.load('img/city.png')
 
 # Background music
-mixer.music.load('music/music.wav')
+mixer.music.load('music/music2.mp3')
 mixer.music.play(-1)
 
 # Title & icon.
-pygame.display.set_caption('Space Invaders')
+pygame.display.set_caption('Busters')
 icon = pygame.image.load('img/launch.png')
 pygame.display.set_icon(icon)
 
 # Player
-playerImg = pygame.image.load('img/player.png')
+playerImg = pygame.image.load('img/ecto-1.png')
+playerImg_flip = pygame.transform.flip(playerImg, True, False)
 playerX = 370
 playerY = 480
 playerX_change = 0
 
 # Enemy
 enemyImg = []
+enemyImg_flip = []
 enemyX = []
 enemyY = []
 enemyX_change = []
@@ -35,11 +37,15 @@ enemyY_change = []
 num_of_enemies = 6
 
 for i in range(num_of_enemies):
-    enemyImg.append(pygame.image.load('img/ufo.png'))
+    enemyImg.append(pygame.image.load('img/ghost.png'))
     enemyX.append(random.randint(0, 736))
     enemyY.append(random.randint(50, 150))
     enemyX_change.append(0.5)
     enemyY_change.append(20)
+
+for i in enemyImg:
+    img = pygame.image.load('img/ghost.png')
+    enemyImg_flip.append(pygame.transform.flip(img, True, False))
 
 # Bullet
 bulletImg = pygame.image.load('img/bullet.png')
@@ -70,11 +76,17 @@ def game_over_text():
 
 
 def player(x, y):
-    screen.blit(playerImg, (x, y))
+    if playerX_change == -0.3:
+        screen.blit(playerImg, (x, y))
+    else:
+        screen.blit(playerImg_flip, (x, y))
 
 
 def enemy(x, y, i):
-    screen.blit(enemyImg[i], (x, y))
+    if enemyX_change[i] == 0.3:
+        screen.blit(enemyImg[i], (x, y))
+    else:
+        screen.blit(enemyImg_flip[i], (x, y))
 
 
 def fire_bullet(x, y):
@@ -145,6 +157,11 @@ while running:
         if enemyX[i] <= 0:
             enemyX_change[i] = 0.3
             enemyY[i] += enemyY_change[i]
+            if enemyX_change[i] == 0.3:
+                print(enemyX[i])
+
+                
+
         elif enemyX[i] >= 736:
             enemyX_change[i] = -0.3
             enemyY[i] += enemyY_change[i]
