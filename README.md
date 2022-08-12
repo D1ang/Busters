@@ -15,33 +15,6 @@ A live demo version can be downloaded **[here](https://github.com/D1ang/Busters/
 
 ![Design](https://github.com/D1ang/Busters/blob/master/Ghostbusters.jpg)
 
-## Table of Contents
-  * [UX](#ux)
-  * [User stories](#user-stories)
-    + [Strategy](#strategy)
-    + [Scope](#scope)
-    + [Structure](#structure)
-    + [Skeleton](#skeleton)
-    + [Surface](#surface)
-  * [Technologies](#technologies)
-    + [JavaScript Libraries](#javascript-libraries)
-    + [Python & Django Plugins](#python---django-plugins)
-  * [Features](#features)
-    + [Features Left to Implement](#features-left-to-implement)
-  * [Testing](#testing)
-  * [Bugs](#bugs)
-    + [CSS](#css)
-    + [JavaScript](#javascript)
-    + [Admin login gave a 500 error](#admin-login-gave-a-500-error)
-  * [Deployment](#deployment)
-    + [Deploy requirements](#deploy-requirements)
-    + [Local deployment](#local-deployment)
-    + [Heroku deployment](#heroku-deployment)
-  * [Credits](#credits)
-    + [Content](#content)
-    + [Media](#media)
-    + [Acknowledgements](#acknowledgements)
-
 ## UX
 As this is my first try as a "game designer" I wanted something simple and pixelart based.
 I did not created the art and music myself.
