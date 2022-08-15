@@ -1,16 +1,11 @@
-import sys
-import random
-
-# Pygame
 import pygame
+import sys
 from pygame.locals import *
-
-# Interface
-from tkinter import filedialog
-from tkinter import *
-
+from settings import *
+from level import Level
 
 pygame.init()
+screen = pygame.display.set_mode((screen_width, screen_height))
 vec = pygame.math.Vector2
 
 # Gravity movements
@@ -18,13 +13,13 @@ acceleration = 0.5
 friction = -0.10
 
 # Video & display
-screen_width = 1280
-screen_height = 720
 fps = 60
 fps_clock = pygame.time.Clock()
 
 display_surface = pygame.display.set_mode((screen_width, screen_height))
 pygame.display.set_caption("Busters")
+
+level = Level(level_map, screen)
 
 """
 Pygame classes
@@ -41,7 +36,7 @@ class Player(pygame.sprite.Sprite):
         self.acceleration = vec (0,0)
     
     def movement(self):
-        self.acceleration = vec(0,0.5) #0,5 adds vertical force a.k.a gravity
+        self.acceleration = vec(0, 0.5)  # 0,5 adds vertical force a.k.a gravity
 
         pressed_keys = pygame.key.get_pressed()
 
@@ -103,7 +98,7 @@ the actual game
 while True:
        
     for event in pygame.event.get():
-        # Ecit when the close window button is clicked    
+        # Exit when the close window button is clicked
         if event.type == QUIT:
             pygame.quit()
             sys.exit()
@@ -112,6 +107,8 @@ while True:
                 player1.jump()
 
     display_surface.fill((0,0,0))
+    screen.fill('black')
+    level.run()
     player1.update()
 
     for sprite in sprites:
