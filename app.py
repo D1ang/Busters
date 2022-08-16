@@ -4,20 +4,20 @@ from pygame import mixer
 import random
 import math
 
-# Initialize pygame.
+# Initialize pygame
 pygame.init()
 
-# Create the screen.
+# Create the screen
 screen = pygame.display.set_mode((800, 600))
 background = pygame.image.load('img/city.png')
 
 # Background music
-mixer.music.load('music/music2.mp3')
+mixer.music.load('music/tune.mp3')
 mixer.music.play(-1)
 
-# Title & icon.
+# Title & icon
 pygame.display.set_caption('Busters')
-icon = pygame.image.load('img/launch.png')
+icon = pygame.image.load('img/ghost.png')
 pygame.display.set_icon(icon)
 
 # Player
@@ -47,7 +47,7 @@ for i in enemyImg:
     img = pygame.image.load('img/ghost.png')
     enemyImg_flip.append(pygame.transform.flip(img, True, False))
 
-# Bullet
+# Shot
 bulletImg = pygame.image.load('img/bullet.png')
 bulletX = 0
 bulletY = 480
@@ -156,11 +156,7 @@ while running:
 
         if enemyX[i] <= 0:
             enemyX_change[i] = 0.3
-            enemyY[i] += enemyY_change[i]
-            if enemyX_change[i] == 0.3:
-                print(enemyX[i])
-
-                
+            enemyY[i] += enemyY_change[i]              
 
         elif enemyX[i] >= 736:
             enemyX_change[i] = -0.3
