@@ -155,11 +155,11 @@ while running:
         enemyX[i] += enemyX_change[i]
 
         if enemyX[i] <= 0:
-            enemyX_change[i] = 0.3
+            enemyX_change[i] = 0.6
             enemyY[i] += enemyY_change[i]              
 
         elif enemyX[i] >= 736:
-            enemyX_change[i] = -0.3
+            enemyX_change[i] = -0.6
             enemyY[i] += enemyY_change[i]
 
         # Collision
