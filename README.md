@@ -24,7 +24,8 @@ I did not created the art and music myself.
 
 ### Strategy
 
-The goal of the game is endless there is no game over and the score counter is unlimited.
+The goal of the game is endless there is a game over when the ghosts get too low.
+The score counter is unlimited.
 
 ### Scope
 
@@ -39,10 +40,6 @@ Spacebar is ude to shoot the ghosts. For every hit 1 point is given to the playe
 
 - Pygame - *Python based game engine*
 - Python - *Programming language*
-
-### Features Left to Implement
-
-As there is no true goal to the game a Game Over event would give a chalenge and ofcourse makes the game more interesting.
 
 ## Testing
 
